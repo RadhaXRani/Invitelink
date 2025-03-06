@@ -1,20 +1,16 @@
 import os
-from flask import Flask
+import logging
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-@app.route('/')
+logging.basicConfig(level=logging.INFO)
+
+@app.route("/")
 def home():
-    return """
-<center> 
-    <img src="https://i.giphy.com/media/3o7abAHdYvZdBNnGZq/giphy.webp" style="border-radius: 12px;"/> 
-</center> 
-<style>
-    body { 
-        background: antiquewhite;
-    }
-</style>"""
+    return jsonify({"message": "Welcome to the API!", "status": "running"}), 200
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000))
-    app.run(host='0.0.0.0', port=port)
+    port = int(os.environ.get("PORT", 10000))
+    logging.info(f"Starting Flask server on port {port}")
+    app.run(host="0.0.0.0", port=port)
