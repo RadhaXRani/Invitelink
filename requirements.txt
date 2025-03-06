@@ -1,3 +1,5 @@
-pyrogram
+git+https://github.com/5hojib/pyrogram-peer-fix.git
 tgcrypto
 flask
+gunicorn==20.1.0
+aiohttp
